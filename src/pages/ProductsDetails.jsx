@@ -4,11 +4,12 @@ import { MyUseContext } from '../context/CartContext';
 import { FaChevronLeft } from "react-icons/fa";
 import { LuTag } from "react-icons/lu";
 import { FiZap } from "react-icons/fi";
+import data from '../data/data.json';
 
 const ProductsDetails = () => {
   const productId = useParams().id;
 
-  const { data,addToCart, } = MyUseContext();
+  const { addToCart, } = MyUseContext();
 
   const singoleProduct = data.find((items, i) => items.id == productId);
 
