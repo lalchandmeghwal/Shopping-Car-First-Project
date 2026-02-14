@@ -55,10 +55,6 @@ const MyProvider = ({ children }) => {
 
     const removeFromCart = (id, removeAll = false) => {
         setCart(prev => {
-
-
-
-
             // 🔴 Agar pura item delete karna ho
             if (removeAll) {
                 return prev.filter(item => item.id !== id);

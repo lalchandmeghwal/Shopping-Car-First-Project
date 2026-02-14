@@ -23,7 +23,7 @@ const Header = () => {
 
               <FiHome className='text-orange-400  ' />
 
-              <h2 className=' tracking-widest ' >LCM<span className='text-orange-400'>STORE</span> </h2>
+              <h2 className=' tracking-widest ' >LALA<span className='text-orange-400'>STORE</span> </h2>
 
             </div>
           </NavLink>
