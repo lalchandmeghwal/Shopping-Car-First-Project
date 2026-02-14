@@ -3,7 +3,7 @@ import { MyUseContext } from '../context/CartContext'
 import SearchBar from '../components/SearchBar';
 import CategoryFillter from '../components/CategoryFillter';
 import { useNavigate } from 'react-router-dom'
-import data  from '../data/data.json'
+import data from '../data/data.json'
 const ProductsList = () => {
 
 
@@ -15,15 +15,9 @@ const ProductsList = () => {
   const filterProducts = data.filter((items) => {
     const searchProducts = items.name.toLowerCase().includes(search.toLocaleLowerCase()) || items.description.toLowerCase().includes(search.toLocaleLowerCase());
     const selectCategory = category === 'All' || items.category === category;
-  
+
     return searchProducts && selectCategory;
   });
-
-
-
-
-
-
 
 
   const navigator = useNavigate();
@@ -48,7 +42,9 @@ const ProductsList = () => {
       <SearchBar setSearch={setSearch} search={search} />
       <CategoryFillter categoryList={category} setCategory={setCategory} />
 
-      <h2 className='max-w-300  p-4 m-auto text-2xl  font-bold'>Featured Gear ({data.length} Items)</h2>
+      <h2 className='max-w-300  p-4 m-auto text-2xl  font-bold'>
+        Featured Gear ({filterProducts.length} { filterProducts.length ==4 ? category :" Items" })
+      </h2>
       <div className='px-4 max-w-300 m-auto flex flex-wrap justify-center  sm:justify-between gap-y-7 '>
 
         {filterProducts.map((items, i) => {

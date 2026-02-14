@@ -28,6 +28,9 @@ const allPath = createBrowserRouter([
       },{
         path:'/order',
         element:<Order/>
+      }, {
+        path:'*',
+        element:<ProductsList/>
       },
     ]
   },
