@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { NavLink, useParams } from 'react-router-dom'
-import { MyUseContext } from '../context/CartContext';
+// import { MyUseContext } from '../context/CartContext';
+import useMyStore from '../context/store';
 import { FaChevronLeft } from "react-icons/fa";
 import { LuTag } from "react-icons/lu";
 import { FiZap } from "react-icons/fi";
@@ -9,7 +10,7 @@ import data from '../data/data.json';
 const ProductsDetails = () => {
   const productId = useParams().id;
 
-  const { addToCart, } = MyUseContext();
+  const  addToCart =  useMyStore(state=>state.addToCart)
 
   const singoleProduct = data.find((items, i) => items.id == productId);
 

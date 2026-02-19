@@ -3,12 +3,13 @@ import { CiShoppingCart } from "react-icons/ci";
 import { NavLink, Outlet } from 'react-router-dom';
 
 import { FiHome } from "react-icons/fi";
-import { MyUseContext } from '../context/CartContext';
 import { ToastContainer, toast } from 'react-toastify';
+import useMyStore from '../context/store';
 const Header = () => {
+  const cart = useMyStore(state => state.cart);
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
 
-  const {cartCount,} = MyUseContext();
- 
+
 
 
 
@@ -27,7 +28,7 @@ const Header = () => {
 
             </div>
           </NavLink>
-          
+
 
           <NavLink to={'/cart'}>
             <div className=' cursor-pointer relative'>
@@ -45,7 +46,7 @@ const Header = () => {
 
         <Outlet />
       </div>
-  <ToastContainer position="top-center"autoClose={1000} />
+      <ToastContainer position="top-center" autoClose={1000} />
     </div>
   )
 }

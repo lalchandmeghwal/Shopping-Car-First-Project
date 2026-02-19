@@ -30,28 +30,7 @@ const MyProvider = ({ children }) => {
     };
 
 
-    
 
-    // remove From Cart 
-    // const removeFromCart = (productId, removeAll = false) => {
-    //     setCart(prev => {
-    //         const existingId = prev.find(item => item.id === productId);
-    //         if (!existingId) return prev;
-
-    //         if (removeAll || existingId.quantity == 1) {
-    //             return prev.filter(item => item.id !== productId);
-    //         } else {
-
-    //             return prev.map(item => item.id == productId ?
-    //                 { ...item, quintity: item.quintity - 1, } : item,
-    //             );
-    //         };
-
-
-    //     });
-
-
-    // };
 
     const removeFromCart = (id, removeAll = false) => {
         setCart(prev => {
@@ -82,14 +61,9 @@ const MyProvider = ({ children }) => {
     const clearCart = () => setCart([]);
 
 
-    // cart Count
-
-    // const cartCount = useMemo(() => {
-    //     return cart.reduce((total, item) => total + item.quantity, 0);
-    // }, [cart]);
 
     const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
- 
+
 
     const totalPrice = useMemo(() => {
         return cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -102,7 +76,7 @@ const MyProvider = ({ children }) => {
 
 
     const values = {
-      
+
         addToCart,
         removeFromCart,
         cart,

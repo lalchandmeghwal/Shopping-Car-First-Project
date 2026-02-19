@@ -1,16 +1,24 @@
 import React from 'react'
 import { FaChevronLeft } from 'react-icons/fa'
 import { NavLink } from 'react-router-dom'
-import { MyUseContext } from '../context/CartContext'
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { FiZap } from "react-icons/fi";
+import useMyStore from '../context/store';
 
 
 const Cart = () => {
 
-  const { cart, totalPrice, addToCart, removeFromCart, cartCount } = MyUseContext();
+  // const { cart, totalPrice, addToCart, removeFromCart, cartCount } = MyUseContext();
+
+  const cart = useMyStore(state => state.cart)
+  const addToCart = useMyStore(state => state.addToCart)
+  const removeFromCart = useMyStore(state => state.removeFromCart)
+
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0)
+  const totalPrice = cart.reduce((total, item) => total + (item.quantity * item.price), 0)
+
 
   return (
     <div>

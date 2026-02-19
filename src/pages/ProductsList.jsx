@@ -1,13 +1,18 @@
 import React, { useState } from 'react'
-import { MyUseContext } from '../context/CartContext'
+// import { MyUseContext } from '../context/CartContext'
 import SearchBar from '../components/SearchBar';
 import CategoryFillter from '../components/CategoryFillter';
 import { useNavigate } from 'react-router-dom'
 import data from '../data/data.json'
+import useMyStore from '../context/store';
 const ProductsList = () => {
 
+ 
+  const addToCart = useMyStore(state=>state.addToCart);
+  const cart = useMyStore(state=>state.cart);
+  
 
-  const { addToCart } = MyUseContext();
+  // const { addToCart } = MyUseContext();
 
   const [search, setSearch] = useState('');
   const [category, setCategory] = useState('All');

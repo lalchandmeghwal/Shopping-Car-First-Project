@@ -7,9 +7,7 @@ import { MyProvider } from './context/CartContext.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <MyProvider>
 
     <App />
-    </MyProvider>
   </StrictMode>,
 )

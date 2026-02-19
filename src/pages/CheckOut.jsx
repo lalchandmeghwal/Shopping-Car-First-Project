@@ -1,6 +1,6 @@
 import { IoLocationOutline } from "react-icons/io5";
-import { MyUseContext } from "../context/CartContext";
 import { useState } from "react";
+import useMyStore from '../context/store'
 
 
 import Order from '../pages/Order';
@@ -12,39 +12,43 @@ const CheckOut = () => {
 
 
 
-  const { cart, totalPrice } = MyUseContext();
+  const  cart = useMyStore(state=>state.cart);
+  const input = useMyStore(state=>state.input);
+  const formdata = useMyStore(state=>state.formdata);
+  const resetForm = useMyStore(state => state.resetForm);
+
+
+  const  totalPrice  = cart.reduce((total, item)=> total + (item.quantity * item.price), 0)
+
+
   const [isOrder, setIsOrder] = useState(false);
 
 
-  const inputName = {
-    name: '',
-    address: '',
-    city: '',
-    zip: '',
-  };
 
 
-  const [input, setInput] = useState(inputName);
+  // const [input, setInput] = useState(inputName);
   const [form, setForm] = useState({});
+  console.log(form);
   
 
   const handelInput = (e) => {
     const {name, value} = e.target;
-    setInput({...input,[name]:value});
+    formdata({...input,[name]:value});
    
 
   }
 
 const handelFormSubmit = (e)=>{
-e.preventDefault();
+  e.preventDefault();
+  setForm(input);
+  
 
-setForm({...input});
+
 
 
 
 setIsOrder(true);
 
-setInput(inputName);
   };
 
   if(isOrder) return <Order data={form}/>

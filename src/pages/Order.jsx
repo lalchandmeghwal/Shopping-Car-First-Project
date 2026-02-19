@@ -1,17 +1,21 @@
 import React from 'react'
 import { FaRegCheckCircle } from "react-icons/fa";
 import {useNavigate} from 'react-router-dom';
-import { MyUseContext } from '../context/CartContext';
+import useMyStore from '../context/store';
 const Order = ({ data }) => {
 
 
-const {clearCart} = MyUseContext();
+  const clearCart = useMyStore(state=>state.clearCart);
+  const resetForm = useMyStore(state => state.resetForm);
 
 const navitage = useNavigate();
 
   const continueShopping = ()=>{
   navitage('/');
-  clearCart();
+    clearCart();
+
+    resetForm();
+
   }
   
 
